@@ -10,7 +10,7 @@ class Array
         struct ArrayEntry
         {
             double entry;
-            double* pLastEntry = NULL;
+            ArrayEntry* pLastEntry = NULL;
         };
 
     public:
@@ -19,42 +19,44 @@ class Array
 
         Array(double aEntry)
         {
-            ArrayEntry* Ptr = (ArrayEntry*)malloc(1);
-            (*Ptr).entry = aEntry / constructor;
-            (*Ptr).pLastEntry = (*lastPtr).pLastEntry;
+            lastPtr = (ArrayEntry*)malloc(1);
+            (*lastPtr).entry = aEntry / constructor;
+            (*lastPtr).pLastEntry = lastPtr;
         }
 
 
         double findEntry (int index)
         {
-            //find entry at index by traversing the array using pointers
-            //multiply by the constructor and get the entry
+            ArrayEntry* Ptr = lastPtr;
+            for (int i = 0; i < index; i++)
+            {
+                Ptr = (*Ptr).pLastEntry;
+            }
+            return (*Ptr).entry * constructor;
         }
         void AddArrayEntry(double aEntry)
         {
 
             ArrayEntry* Ptr = (ArrayEntry*)malloc(1);
             (*Ptr).entry = aEntry / constructor;
-            (*Ptr).pLastEntry = (*lastPtr).pLastEntry;
+            (*Ptr).pLastEntry = lastPtr;
+            lastPtr = Ptr;
 
         }
 
 };
 
-struct integer
-{
-    int number1;
-    int number2;
-};
-
 int main()
 {
-    integer* pArray;
-    pArray = (integer*)malloc(1);
-    integer* p = NULL;
-    (*pArray).number1 = 5;
-    (*pArray).number2 = 6;
-    std::cout << (*p).number1 << std::endl;
-    std::cout << (*p).number2;
+    Array array(5);
+
+    std::cout << array.lastPtr << std::endl;
+
+    array.AddArrayEntry(10);
+
+    std::cout << array.lastPtr << std::endl;
+
+    std::cout << array.findEntry(0);
+
 }
 
