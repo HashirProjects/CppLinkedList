@@ -17,13 +17,6 @@ class Array
         double constructor = 1;
         ArrayEntry* lastPtr = NULL;
 
-        Array(double aEntry)
-        {
-            ArrayEntry* Ptr = (ArrayEntry*)malloc(1);
-            (*Ptr).entry = aEntry / constructor;
-            (*Ptr).pLastEntry = (*lastPtr).pLastEntry;
-        }
-
 
         double findEntry (int index)
         {
@@ -32,10 +25,9 @@ class Array
         }
         void AddArrayEntry(double aEntry)
         {
-
-            ArrayEntry* Ptr = (ArrayEntry*)malloc(1);
-            (*Ptr).entry = aEntry / constructor;
-            (*Ptr).pLastEntry = (*lastPtr).pLastEntry;
+           ArrayEntry* Ptr = (ArrayEntry*)malloc(1);
+           (*Ptr).entry = aEntry / constructor;
+           (*Ptr).pLastEntry = (*lastPtr).pLastEntry;
 
         }
 
