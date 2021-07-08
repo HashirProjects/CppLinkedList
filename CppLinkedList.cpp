@@ -19,7 +19,7 @@ class Array
 
         Array(double aEntry)
         {
-            lastPtr = (ArrayEntry*)malloc(1);
+            lastPtr = (ArrayEntry*)malloc(sizeof(ArrayEntry));
             (*lastPtr).entry = aEntry / constructor;
             (*lastPtr).pLastEntry = lastPtr;
         }
@@ -37,7 +37,7 @@ class Array
         void AddArrayEntry(double aEntry)
         {
 
-            ArrayEntry* Ptr = (ArrayEntry*)malloc(1);
+            ArrayEntry* Ptr = (ArrayEntry*)malloc(sizeof(ArrayEntry));
             (*Ptr).entry = aEntry / constructor;
             (*Ptr).pLastEntry = lastPtr;
             lastPtr = Ptr;
@@ -56,7 +56,7 @@ int main()
 
     std::cout << array.lastPtr << std::endl;
 
-    std::cout << array.findEntry(0);
+    std::cout << array.findEntry(1);
 
 }
 
